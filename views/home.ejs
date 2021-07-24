@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <script defer src="/js/script.js"></script>
+  <title>NameGuess App</title>
+</head>
+<body >
+  <div class="score">Score : <span id="scoreBoard" ></span></div>
+   <div class="container">
+     <div id="question-container" class="hide">
+       <div id="question">Question</div>
+       <div id="answer-buttons" class="btn-grid">
+         <button class="btn">Male</button>
+         <button class="btn">Female</button>
+       </div>
+     </div>
+     <div class="controls">
+       <button id="start-btn" class="start-btn btn">Start</button>
+       <button id="next-btn" class="next-btn btn hide">Next</button>
+     </div>
+     <div class="hide" id="won">
+      <div>Congrats !</div>
+      <div>You won</div>
+      <a href="/" class="btn">Play Again</a>
+     </div>
+     <div class="hide" id="lost">
+      <div>Oops !</div>
+      <div>You lost</div>
+      <a href="/" class="btn">Play Again</a>
+     </div>
+   </div>
+</body>
+</html>
