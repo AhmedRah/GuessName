@@ -1,54 +1,39 @@
-<!-- Projet realiser par RAHMOUNI AHmed & EL ANDALOUSSI Ayoub -->
+# GuessName App 
+*By Ahmed RAHMOUNI*
 
-Instructions :
+## Installation
 
-Pour preparer l'environment pour lec e projet , vous pouvez installer tout les packages utiliser 
-avec le gestionnaire de packages NPM :
-1- Placer vous dans la repertoire du projet 
-2- Lancer la commande suivante :
-    sudo npm install
-3- Apres l'installation , vous pouvez demarer le serveur avec la commande :
-  node server.js
-4- La base de donnees est heberger sur le service cloud de mongoDB (atlas),est appeller dans le ficher db.js dans la repertoire controller.
-5- Voici le lien directe de la BD , il est aussi accessible par n'importe quelle Adresse IP soit par le programme MongoDB Compass soit par le le shell MongoDB :
-  - Par shell :
-    mongo "mongodb+srv://cluster0.ivdg6.mongodb.net/projet-web" --dbuser admin
-  - Par MongoDB Compass :
-    mongodb+srv://dbuser:dbpassword@cluster0.ivdg6.mongodb.net/test
+Pour preparer l'environment pour lancer l'appli , vous pouvez installer tout les packages utiliser
+avec le gestionnaire de packages **NPM** :
+* Installation des packages : `sudo npm install`
+* Installation manuelle : accedez au fichier **packages.json** pour acceder aux differents packages utlisees
+	
+## Lancer l'appli
+* Lancer l'appli : `node app.js`
 
-Si vous arrivez pas a installer tout les packages precedents , veuiller consulter le fichier package.json pour les trouver manuellement.
+## Fonctionement
+### Population de la base de donnees 
+Pour renitialiser la base de donnes ou redemarrer le serveur , il faut lancer le fichier resetDB.js par `node resetDB.js` 
+### Fonctionement du jeu
+sur la premiere page de l'appli , l'utilisateur clique sur le bouton **Start** pour lancer le jeu.
+1. Le cote client lance une requette **Get** au serveur demandant un Prenom
+2. Le serveur recoit la demande et selectionne un Prenon alteatoire parmi les noms de la base de donnees
+3. Le seveur envoie une demande (Fetch) du sexe du nom par L'API **GenderApi** 
+4. Le serveur **parse** la reponse en JSON et la renvoi avec le nom en reponse au cote client
+5. Le client **script.js** recoit le nom et le sexe , construit une question avec les differnt choix possible et demarer le jeu
+6. l'utilsateur repond a la question , script.js met a jour le score et prepare la question suivantes par **l'etape 1 ainsi de suite jusqu'au le score est soit 0 ou 20**.
+7. le jeu est terminer , l'utlisateur recoit un message de fin , et a le choix de recommncer a nouveau.
 
-*** Mon Setup for the data base : ***
-Using WSL ubunto v 18.04 (Windows SubSystem For Linux v2)
-Node Latest versin 14.15.3
-NPM package manager Latest v 6.14.9
-MangoDB latest version v4.4.2
-ODM : Mongoose
-<!-- Turbo CLI v0.39.5 -->
+## Temps de codage
 
+ce projet m'a pris 6h repartie sur 2 jours 
+* 2h pour le cote client
+* 3h pour le cote serveur
+* 1h pour la preparation de l'environement + correction des erreurs et les dernieres retouches
 
-Notes : 
-sudo npm install express-validator body-parser bcryptjs jsonwebtoken --save
+## Limitations
 
-
-REST & CRUD : 
-
-*** CRUD for comments : ***
-
-Index  :  GET    /comments          - Display all comments
-Show   :  GET    /comments/:id      - get one comment (using its id)
-Create :  POST   /comments          - Create a new comment 
-Update :  PATCH  /comments/:id      - update a specific comment (using its id)
-Edit   :  GET    /comments/:id/edit - form to edit specific comment
-Destroy:  DELETE /comments/:id      - Delete one comment (using its id)
-
-*** CRUD for articles : ***
-
-Index  :  GET    /articles          - Display all comments
-Show   :  GET    /articles/:id      - get one article (using its id)
-Create :  POST   /articles          - Create a new article 
-Update :  PATCH  /articles/:id      - update a specific article (using its id)
-Edit   :  GET    /articles/:id/edit - form to edit specific article
-Destroy:  DELETE /articles/:id      - Delete one article (using its id)
-
-
+En considerons le tmeps de realisation de ce projet ainsi que mes faibles diponibilites durant ces derniers jours , il existe qulques aspects qui beneficerons d'ameliorations :
+* UI/UX : etant un aspect secondaire du projet ,  je pouvais mieux presenter le jeu et rajouter plus d'informations/indications.
+* GenderAPI retourne des **unknown** poru les renoms avec des accents, j'ai improvise remplacant les **unknown** par **male** . Cette erreur peux etre facilement corriger lors de population en remplacans tout les "é" par "e" ainsi de suite par la metode `String.replace()`.
+* Le performance peut etre ameliorer : soit par appeler L'API au moment de population de la base de donnees pour que l'acces au nom et sexe soit plus rapide au moment du jeu, soit 	par eviter les parsing en JSON avant et apres chaque requettes.
