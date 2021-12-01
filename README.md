@@ -37,3 +37,6 @@ En considerons le tmeps de realisation de ce projet ainsi que mes faibles diponi
 * UI/UX : etant un aspect secondaire du projet ,  je pouvais mieux presenter le jeu et rajouter plus d'informations/indications.
 * GenderAPI retourne des **unknown** poru les renoms avec des accents, j'ai improvise remplacant les **unknown** par **male** . Cette erreur peux etre facilement corriger lors de population en remplacans tout les "é" par "e" ainsi de suite par la metode `String.replace()`.
 * Le performance peut etre ameliorer : soit par appeler L'API au moment de population de la base de donnees pour que l'acces au nom et sexe soit plus rapide au moment du jeu, soit 	par eviter les parsing en JSON avant et apres chaque requettes.
+
+
+## future Improvements :
